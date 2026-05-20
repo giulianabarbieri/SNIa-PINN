@@ -1,0 +1,4 @@
+.venv/
+dataset/ZTF*_detections.csv
+__pycache__/
+*.pyc
