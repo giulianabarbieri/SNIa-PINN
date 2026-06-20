@@ -16,6 +16,77 @@ Implementar una **Red Neuronal Informada por la Física (PINN)** que, a partir d
 
 ---
 
+## Reproducibilidad
+
+### Requisitos
+
+- **Julia ≥ 1.10** con los paquetes listados en `Project.toml`
+- **Python ≥ 3.9** con `requests` (solo para el script de descarga de datos)
+
+### Pipeline
+
+**1. Clonar el repositorio**
+
+```bash
+git clone https://github.com/giulianabarbieri/SNIa-PINN.git
+cd SNIa-PINN
+```
+
+**2. Descargar los datos** (opcional)
+
+Los archivos CSV de los 3 objetos de estudio ya están incluidos en `dataset/`. Si querés descargar datos frescos desde ALeRCE:
+
+```bash
+pip install requests
+python dataset/loader.py
+```
+
+Este script descarga las detecciones de los 3 objetos + algunos adicionales para exploración.
+
+**3. Activar el entorno de Julia**
+
+```bash
+julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
+```
+
+**4. Correr el grid search** (3 objetos, métricas completas)
+
+```bash
+cd src
+julia grid_search.jl
+```
+
+Esto entrena la PINN sobre los 3 objetos ZTF, genera `resultados_grid.csv` con todas las métricas.
+
+**5. (Opcional) Experimento de baches PINN vs GP**
+
+```bash
+cd src
+julia experimento_baches.jl
+```
+
+Compara la reconstrucción de la PINN contra un Gaussian Process en 6 escenarios de datos faltantes. Genera la Tabla 3 del informe.
+
+### Estructura del repositorio
+
+```
+SNIa-PINN/
+├── dataset/               # CSVs de ZTF/ALeRCE
+│   ├── ZTF25aavdmzf_detections.csv
+│   ├── ZTF25aaxjntk_detections.csv
+│   ├── ZTF25aaxeojh_detections.csv
+│   └── loader.py          # Script opcional de descarga
+├── src/
+│   ├── training_inverse.jl     # PINN: arquitectura, loss, entrenamiento
+│   ├── grid_search.jl          # Grid de hiperparámetros (3 objetos)
+│   └── experimento_baches.jl   # PINN vs GP en gaps
+├── README.md
+├── Project.toml
+└── .gitignore
+```
+
+---
+
 ## 2. Metodología
 
 ### 2.1 Ecuación de Arnett como motor físico
