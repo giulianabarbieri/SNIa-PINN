@@ -25,17 +25,17 @@ include("training_inverse.jl")
 
 OBJETOS = [
     (nombre    = "ZTF25aavdmzf",
-     archivo   = "/home/kotyonok/Documents/SNIa-PINN/dataset/ZTF25aavdmzf_detections.csv",
+     archivo   = joinpath(@__DIR__, "..", "dataset", "ZTF25aavdmzf_detections.csv"),
      z         = 0.0407,
      lit_ni    = "0.52 – 0.58"),
 
     (nombre    = "ZTF25aaxjntk",
-     archivo   = "/home/kotyonok/Documents/SNIa-PINN/dataset/ZTF25aaxjntk_detections.csv",
+     archivo   = joinpath(@__DIR__, "..", "dataset", "ZTF25aaxjntk_detections.csv"),
      z         = 0.01633,
      lit_ni    = "0.35 – 0.42"),
 
     (nombre    = "ZTF25aaxeojh",
-     archivo   = "/home/kotyonok/Documents/SNIa-PINN/dataset/ZTF25aaxeojh_detections.csv",
+     archivo   = joinpath(@__DIR__, "..", "dataset", "ZTF25aaxeojh_detections.csv"),
      z         = 0.049, #correccion del redshift!!!
     lit_ni    = "~0.80 – 1.30"),
 ]

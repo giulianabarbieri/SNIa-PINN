@@ -29,7 +29,7 @@ include("training_inverse.jl")
 # 0. CONFIGURACIÓN
 # ==============================================================================
 
-const ARCHIVO_COMPLETO = "/home/kotyonok/Documents/SNIa-PINN/dataset/ZTF25aavdmzf_detections.csv"
+const ARCHIVO_COMPLETO = joinpath(@__DIR__, "..", "dataset", "ZTF25aavdmzf_detections.csv")
 const Z_OBJETO = 0.0407
 const PARAMS_OPTIMOS = (t0_init = -0.05f0, s1_epochs = 2000, s2_epochs = 3000, ε_causal = 0.3f0)
 const SEED = 123

@@ -602,7 +602,7 @@ end
 
 if abspath(PROGRAM_FILE) == @__FILE__
     result = run_pinn_experiment(
-        archivo       = "/home/kotyonok/Documents/SNIa-PINN/dataset/ZTF25aaxjntk_detections.csv",
+        archivo       = joinpath(@__DIR__, "..", "dataset", "ZTF25aaxjntk_detections.csv"),
         z             = 0.01633,
         t0_init       = -0.1f0,
         lit_ni_range  = "0.35 – 0.42",
