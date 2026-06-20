@@ -79,7 +79,9 @@ SNIa-PINN/
 ├── src/
 │   ├── training_inverse.jl     # PINN: arquitectura, loss, entrenamiento
 │   ├── grid_search.jl          # Grid de hiperparámetros (3 objetos)
-│   └── experimento_baches.jl   # PINN vs GP en gaps
+│   ├── experimento_baches.jl   # PINN vs GP en gaps
+│   ├── loader.py               # Descarga datos de ALeRCE
+│   └── loader_redshift.py      # Descarga redshift de ZTF
 ├── README.md
 ├── Project.toml
 └── .gitignore
